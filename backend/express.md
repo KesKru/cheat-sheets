@@ -10,6 +10,8 @@
 - [View engines](#View-engines)
 - [Database options](#Database-options)
 - [Input validation](#Input-validation)
+- [Authentication](#Authentication)
+- [Error handling](#Error-handling)
 - [Logging](#Logging)
 - [SASS compiling](#SASS-compiling)
 - [HTTP Verbs and Routes](#HTTP-Verbs-and-Routes)
@@ -194,13 +196,53 @@ router.post(
 
 For more options - https://express-validator.github.io/docs/
 
+## Authentication
+
+https://medium.freecodecamp.org/how-to-write-a-production-ready-node-and-express-app-f214f0b17d8c
+
+https://medium.freecodecamp.org/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e
+
+```js
+//  JSON web token authentication with PassportJs.
+//-----------------------Modules-----------------------//
+//-----------------------Config-----------------------//
+
+//  Cookies and Sessions authentication with PassportJs.
+//-----------------------Modules-----------------------//
+//-----------------------Config-----------------------//
+
+// Facebook strategy
+//-----------------------Modules-----------------------//
+//-----------------------Config-----------------------//
+
+// Google strategy
+//-----------------------Modules-----------------------//
+//-----------------------Config-----------------------//
+```
+
+## Error handling
+
+```js
+// Print internal express logging to the console.
+//-----------------------Modules-----------------------//
+DEBUG=express:* node app.js
+//-----------------------Config-----------------------//
+```
+
 ## Logging
 
 ```js
-// Default express logger(debug) setup (console logging)
-//-----------------------Modules-----------------------//
+// Print internal express logging to the console.
 
-//-----------------------Config-----------------------//
+DEBUG=express:* node app.js
+
+// Add npm script to avoide retyping and run it with nodemon.
+// npm run debug.
+
+"scripts": {
+    "debug": "set DEBUG=express:* && nodemon app.js"
+  }
+
 ```
 
 ```js
@@ -305,7 +347,7 @@ response.locals; // pass data to template
 ## Middleware
 
 ```js
-// Middleware function structure
+// General Middleware function structure
 
 function(request, response, next) {}
 
@@ -315,25 +357,15 @@ const myLogger = function (req, res, next) {
   console.log('LOGGED')
   next()
 }
+
+// error handling middleware
+
+function(err, request, response, next) {}
 ```
 
 ## Common folder structure
 
 ```js
-root/
-├── server.js     // Acts as the main file of the project where you initialize the app and other elements of the project.
-├── package.json
-├── controllers/
-├── util/
-├── middlewares/
-├── models/
-├── routes/
-├── public/
-├── views/
-├── config/
-└── tests/
-
-
 // Sample project setup
 project/
 │ // Define your app route handlers and business logic
