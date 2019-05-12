@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose
-  .connect('mongodb://localhost:27017/db-name-goes-here', {
+  .connect('mongodb://localhost:27017/expres-template-db', {
     useNewUrlParser: true
   })
   .then(() => {

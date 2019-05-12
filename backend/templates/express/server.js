@@ -2,6 +2,7 @@
 
 const express = require('express'); // include express module
 const bodyParser = require('body-parser'); // parsing incoming express
+const cors = require('cors');
 const app = express(); // create an express instance
 
 // Include routes
@@ -11,6 +12,7 @@ const usersRouter = require('./routes/users');
 //// Middleware
 app.use(bodyParser.urlencoded({ extended: false })); // parse form data
 app.use(bodyParser.json()); // parse json data
+app.use(cors());
 
 //// Database
 // Requiring file with no exports in it,- will run the whole file, like a big function.
