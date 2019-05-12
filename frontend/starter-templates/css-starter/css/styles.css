@@ -140,6 +140,9 @@ label {
   align-self: center;
   padding-left: 10px; }
 
+img {
+  width: 100%; }
+
 /* -------------- Basic grid Styles------------*/
 .container {
   margin: auto; }
