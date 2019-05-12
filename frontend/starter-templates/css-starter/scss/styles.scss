@@ -1,0 +1,305 @@
+/* -------------- Variables------------*/
+
+// fonts & icons
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+$fontfamily: url(https://fonts.googleapis.com/css?family=Lato);
+$fontsize: 0.9em;
+// variables
+$gutter: 10px !default;
+$padding: 10px !default;
+//colors
+$primary: rgb(181, 200, 196) !default;
+$background: rgb(243, 244, 245) !default;
+$light: rgb(255, 255, 255) !default;
+$dark: rgb(45, 45, 45) !default;
+$black: rgb(0, 0, 0) !default;
+//border radiu
+$borderradius: 5px !default;
+//shadows
+$navshadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 6px 2px rgba(0, 0, 0, 0.1);
+$shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.08),
+  0 3px 1px -2px rgba(0, 0, 0, 0.16);
+
+/* -------------- Globals------------*/
+html * {
+  box-sizing: border-box;
+  font-family: Lato;
+}
+// *,
+// *:before,
+// *:after {
+//   box-sizing: inherit;
+//   font-display: inherit;
+// }
+/* -------------- Styles------------*/
+
+body {
+  font-size: $fontsize;
+  height: 100vh;
+  margin: 0;
+  color: $dark;
+  background-color: $background;
+}
+
+hr {
+  height: 1px;
+  background-color: darken($background, 25%);
+  margin: 1 * $padding 1 * $padding 1 * $padding 1 * $padding;
+  border: none;
+}
+
+nav {
+  display: flex;
+  flex: 1;
+  height: 6 * $padding;
+  // padding: 2 * $padding 2 * $padding 2 * $padding 2 * $padding;
+  margin-bottom: $padding;
+  background-color: $primary;
+  box-shadow: $navshadow;
+  align-items: center;
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  a {
+    font-size: 1.2 * $fontsize;
+    font-weight: 400;
+    padding-right: $padding;
+    text-decoration: none;
+    color: $dark;
+    &:hover {
+      color: lighten($dark, 30%);
+    }
+    &:active {
+      color: $dark;
+    }
+  }
+  .material-icons {
+    font-size: 2.5 * $fontsize;
+    margin-right: auto;
+    padding: 0 $padding 0 $padding;
+    color: $dark;
+    &:hover {
+      color: lighten($dark, 30%);
+    }
+    &:active {
+      color: $dark;
+    }
+  }
+}
+
+a {
+  font-size: $fontsize;
+  font-weight: 600;
+  text-decoration: none;
+  color: darken($primary, 30%);
+  &:hover {
+    color: darken($primary, 15%);
+  }
+  &:active {
+    color: darken($primary, 45%);
+  }
+}
+
+p {
+  padding: $padding $padding $padding $padding;
+  margin: 0;
+  background-color: $light;
+  border-radius: $borderradius;
+  box-shadow: $shadow;
+  // border: 1px solid darken($light, 10%);
+}
+
+button {
+  margin: $padding;
+  padding: 1.25 * $padding 2 * $padding 1.25 * $padding 2 * $padding;
+  background-color: $primary;
+  border-radius: $borderradius;
+  border: none;
+  font-size: $fontsize;
+  box-shadow: $shadow;
+  // border: 1px solid darken($light, 10%);
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: darken($primary, 8%);
+    transition: ease-in-out 0.2s;
+  }
+  &:active {
+    background-color: darken($primary, 16%);
+    transition: ease-in-out;
+  }
+}
+
+input {
+  &[type='text'] {
+    width: 100%;
+    background-color: transparentize($dark, 0.93);
+    margin: $padding 0;
+    padding: $padding;
+    border: none;
+    border-bottom: 2px solid $primary;
+    border-radius: $borderradius $borderradius 0 0;
+    box-shadow: none;
+    outline: 0;
+    outline-offset: 0;
+    &:focus {
+      background-color: transparentize($dark, 0.88);
+    }
+  }
+  &[type='email'] {
+    @extend [type='text'];
+  }
+  &[type='password'] {
+    @extend [type='text'];
+  }
+  &[type='radio'] {
+    position: relative;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 5px 0;
+    // padding: 10px 0;
+    // margin-right: 0 10px;
+    &::after,
+    &::before {
+      position: absolute;
+      display: inline-block;
+      z-index: 1;
+      content: '';
+      color: darken($primary, 15%);
+      border-radius: 50%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 2px solid darken($primary, 15%);
+      background-color: lighten($black, 93%);
+    }
+    &:hover::after {
+      @extend ::after;
+      background-color: lighten($black, 88%);
+    }
+    &:checked::after {
+      @extend ::after;
+      top: 25%;
+      bottom: 25%;
+      left: 25%;
+      right: 25%;
+      background-color: darken($primary, 15%);
+      // clip-path: circle(28% at 50% 50%);
+    }
+  }
+  &[type='checkbox'] {
+    @extend [type='radio'];
+    &::after,
+    &::before {
+      border-radius: 10%;
+    }
+    &:hover::after {
+      @extend ::after;
+    }
+    &:checked::after {
+      @extend ::after;
+      top: 15%;
+      bottom: 15%;
+      left: 15%;
+      right: 15%;
+      clip-path: polygon(100% 19%, 48% 100%, 0 59%, 18% 36%, 43% 57%, 78% 3%);
+    }
+  }
+}
+
+label {
+  // width: 100%;
+  align-self: center;
+  padding-left: 10px;
+}
+
+/* -------------- Basic grid Styles------------*/
+
+.container {
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  padding: $padding $padding $padding $padding;
+}
+
+/* -------------- Responsive Modifiers (a mobile-first approach)--------------*/
+
+/* Base classes for all media */
+.container {
+  width: 100%;
+  // flex: 0 0 70%;
+}
+.col-12 {
+  flex: 0 0 100%;
+}
+.col-6 {
+  flex: 0 0 50%;
+}
+.col-4 {
+  flex: 0 0 33.3333%;
+}
+.col-3 {
+  flex: 0 0 25%;
+}
+/* Small to medium screens */
+@media (min-width: 640px) {
+  .container {
+    width: 85%;
+  }
+  .col-md-12 {
+    flex: 0 0 100%;
+  }
+  .col-md-6 {
+    flex: 0 0 50%;
+  }
+  .col-md-4 {
+    flex: 0 0 33.3333%;
+  }
+  .col-md-3 {
+    flex: 0 0 25%;
+  }
+}
+/* Large screens */
+@media (min-width: 1024px) {
+  .container {
+    width: 75%;
+  }
+  .col-lg-12 {
+    flex: 0 0 100%;
+  }
+  .col-lg-6 {
+    flex: 0 0 50%;
+  }
+  .col-lg-4 {
+    flex: 0 0 33.3333%;
+  }
+  .col-lg-3 {
+    flex: 0 0 25%;
+  }
+}
+
+///////////////////////////////////////////////////////
+
+// layout for demo doc
+
+.col.align-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .row {
+    width: 100%;
+    justify-content: center;
+  }
+}
