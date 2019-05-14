@@ -1,4 +1,3 @@
-#Resourses to be sorted
+## Unsorted resourses
 
-##css
 http://animista.net/ - css animations

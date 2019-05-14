@@ -23,6 +23,7 @@ const UserSchema = new Schema({
   }
 });
 
+// On .save() check if user exists and hash pasword if he does.
 UserSchema.pre('save', function(next) {
   var user = this;
   // only hash the password if it has been modified (or is new)
